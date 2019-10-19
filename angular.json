@@ -24,13 +24,13 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "src/css/main.scss"],
+            "styles": ["src/styles.scss", "src/assets/css/main.css"],
             "scripts": [
-              "src/js/breakpoint.min.js",
-              "src/js/browser.min.js",
-              "src/js/jquery.min.js",
-              "src/js/main.js",
-              "src/js/util.js"
+              "src/assets/js/breakpoints.min.js",
+              "src/assets/js/browser.min.js",
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/util.js"
             ]
           },
           "configurations": {
