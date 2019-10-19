@@ -1,11 +1,38 @@
 <!-- Wrapper -->
 <div id="wrapper">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="inner">
+      <!-- Search -->
+      <section id="search" class="alt">
+        <form method="post" action="#">
+          <input type="text" name="query" id="query" placeholder="Rechercher un film de notre catalogue" />
+        </form>
+      </section>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <header>Menu</header>
+        <div class="menu-items">
+          <span>
+            Accueil
+          </span>
+          <span>
+            Pourquoi ce projet
+          </span>
+          <span>
+            Contacts
+          </span>
+        </div>
+      </nav>
+    </div>
+  </div>
   <!-- Main -->
   <div id="main">
     <div class="inner">
       <!-- Header -->
       <header id="header">
-        <a class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+        <a class="logo">By <strong>BigBadWolf</strong></a>
         <ul class="icons">
           <li>
             <a class="icon brands fa-twitter"><span class="label">Twitter</span></a>
@@ -29,93 +56,36 @@
       <section id="banner">
         <div class="content">
           <header>
-            <h1>
-              Hi, I’m Editorial<br />
-              by HTML5 UP
-            </h1>
-            <p>A free and fully responsive site template</p>
+            <h1>Movies Land<br /></h1>
+            <p>A free site for searching info about any movies you want</p>
           </header>
           <p>
-            Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue.
-            Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi
-            nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.
+            Vous pourrez effectuer votre recherche d'un film à partir de la barre de recherche en haut à gauche.
           </p>
           <ul class="actions">
-            <li><a class="button big">Learn More</a></li>
+            <li><a (click)="create(listMovies[0])" class="button big">Learn More</a></li>
           </ul>
         </div>
         <span class="image object">
-          <img src="assets/images/pic10.jpg" alt="" />
+          <div class="sliding-bg" alt=""></div>
         </span>
       </section>
 
       <!-- Section -->
       <section>
         <header class="major">
-          <h2>Erat lacinia</h2>
-        </header>
-        <div class="features">
-          <article>
-            <span class="icon fa-gem"></span>
-            <div class="content">
-              <h3>Portitor ullamcorper</h3>
-              <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante
-                interdum. Sed nulla amet lorem feugiat tempus aliquam.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span class="icon solid fa-paper-plane"></span>
-            <div class="content">
-              <h3>Sapien veroeros</h3>
-              <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante
-                interdum. Sed nulla amet lorem feugiat tempus aliquam.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span class="icon solid fa-rocket"></span>
-            <div class="content">
-              <h3>Quam lorem ipsum</h3>
-              <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante
-                interdum. Sed nulla amet lorem feugiat tempus aliquam.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span class="icon solid fa-signal"></span>
-            <div class="content">
-              <h3>Sed magna finibus</h3>
-              <p>
-                Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante
-                interdum. Sed nulla amet lorem feugiat tempus aliquam.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Ipsum sed dolor</h2>
+          <h2>Films disponibles</h2>
         </header>
         <div class="posts">
-          <article>
+          <article *ngFor="let movie of listMovies">
             <a class="image"><img src="assets/images/pic01.jpg" alt=""/></a>
-            <h3>Interdum aenean</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.
-              Sed nulla amet lorem feugiat tempus aliquam.
-            </p>
+            <h3 [innerHTML]="movie.title"></h3>
+            <p *ngIf="movie.description" [innerHTML]="movie.description"></p>
             <ul class="actions">
               <li><a class="button">More</a></li>
             </ul>
           </article>
-          <article>
+          <!-- <article>
             <a class="image"><img src="assets/images/pic02.jpg" alt=""/></a>
             <h3>Nulla amet dolore</h3>
             <p>
@@ -169,98 +139,8 @@
             <ul class="actions">
               <li><a class="button">More</a></li>
             </ul>
-          </article>
+          </article> -->
         </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- Sidebar -->
-  <div id="sidebar">
-    <div class="inner">
-      <!-- Search -->
-      <section id="search" class="alt">
-        <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Search" />
-        </form>
-      </section>
-
-      <!-- Menu -->
-      <nav id="menu">
-        <header class="major">
-          <h2>Menu</h2>
-        </header>
-        <ul>
-          <li><a>Homepage</a></li>
-          <li><a>Generic</a></li>
-          <li><a>Elements</a></li>
-          <li>
-            <span class="opener">Submenu</span>
-            <ul>
-              <li><a>Lorem Dolor</a></li>
-              <li><a>Ipsum Adipiscing</a></li>
-              <li><a>Tempus Magna</a></li>
-              <li><a>Feugiat Veroeros</a></li>
-            </ul>
-          </li>
-          <li><a>Etiam Dolore</a></li>
-          <li><a>Adipiscing</a></li>
-          <li>
-            <span class="opener">Another Submenu</span>
-            <ul>
-              <li><a>Lorem Dolor</a></li>
-              <li><a>Ipsum Adipiscing</a></li>
-              <li><a>Tempus Magna</a></li>
-              <li><a>Feugiat Veroeros</a></li>
-            </ul>
-          </li>
-          <li><a>Maximus Erat</a></li>
-          <li><a>Sapien Mauris</a></li>
-          <li><a>Amet Lacinia</a></li>
-        </ul>
-      </nav>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Ante interdum</h2>
-        </header>
-        <div class="mini-posts">
-          <article>
-            <a class="image"><img src="assets/images/pic07.jpg" alt=""/></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-          <article>
-            <a class="image"><img src="assets/images/pic08.jpg" alt=""/></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-          <article>
-            <a class="image"><img src="assets/images/pic09.jpg" alt=""/></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-        </div>
-        <ul class="actions">
-          <li><a class="button">More</a></li>
-        </ul>
-      </section>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Get in touch</h2>
-        </header>
-        <p>
-          Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper
-          dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.
-        </p>
-        <ul class="contact">
-          <li class="icon solid fa-envelope"><a>information@untitled.tld</a></li>
-          <li class="icon solid fa-phone">(000) 000-0000</li>
-          <li class="icon solid fa-home">
-            1234 Somewhere Road #8254<br />
-            Nashville, TN 00000-0000
-          </li>
-        </ul>
       </section>
 
       <!-- Footer -->
