@@ -6,7 +6,12 @@
       <!-- Search -->
       <section id="search" class="alt">
         <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Rechercher un film de notre catalogue" />
+          <input
+            [(ngModel)]="textFilter"
+            name="searchTerm"
+            type="text"
+            placeholder="Rechercher un film de notre catalogue"
+          />
         </form>
       </section>
 
@@ -77,69 +82,23 @@
           <h2>Films disponibles</h2>
         </header>
         <div class="posts">
-          <article *ngFor="let movie of listMovies">
-            <a class="image"><img src="assets/images/pic01.jpg" alt=""/></a>
-            <h3 [innerHTML]="movie.title"></h3>
-            <p *ngIf="movie.description" [innerHTML]="movie.description"></p>
-            <ul class="actions">
-              <li><a class="button">More</a></li>
-            </ul>
-          </article>
-          <!-- <article>
-            <a class="image"><img src="assets/images/pic02.jpg" alt=""/></a>
-            <h3>Nulla amet dolore</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.
-              Sed nulla amet lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li><a class="button">More</a></li>
-            </ul>
-          </article>
-          <article>
-            <a class="image"><img src="assets/images/pic03.jpg" alt=""/></a>
-            <h3>Tempus ullamcorper</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.
-              Sed nulla amet lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li><a class="button">More</a></li>
-            </ul>
-          </article>
-          <article>
-            <a class="image"><img src="assets/images/pic04.jpg" alt=""/></a>
-            <h3>Sed etiam facilis</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.
-              Sed nulla amet lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li><a class="button">More</a></li>
-            </ul>
-          </article>
-          <article>
-            <a class="image"><img src="assets/images/pic05.jpg" alt=""/></a>
-            <h3>Feugiat lorem aenean</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.
-              Sed nulla amet lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li><a class="button">More</a></li>
-            </ul>
-          </article>
-          <article>
-            <a class="image"><img src="assets/images/pic06.jpg" alt=""/></a>
-            <h3>Amet varius aliquam</h3>
-            <p>
-              Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.
-              Sed nulla amet lorem feugiat tempus aliquam.
-            </p>
-            <ul class="actions">
-              <li><a class="button">More</a></li>
-            </ul>
-          </article> -->
+          <div class="loader" *ngIf="!isLoaded">
+            <img src="assets/images/loader.gif" alt="" />
+          </div>
+          <ng-container *ngIf="isLoaded">
+            <article *ngFor="let movie of listMovies | searchMovie: textFilter">
+              <a class="image"
+                ><img #img [src]="movie.payload.doc.data().img" (error)="img.src = 'assets/images/pic01.jpg'" alt=""
+              /></a>
+              <h3 [innerHTML]="movie.payload.doc.data().title"></h3>
+              <p *ngIf="movie.payload.doc.data().description" [innerHTML]="movie.payload.doc.data().description"></p>
+              <ul class="actions">
+                <li>
+                  <a class="button">More {{ textFilter }} </a>
+                </li>
+              </ul>
+            </article>
+          </ng-container>
         </div>
       </section>
 
