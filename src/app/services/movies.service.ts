@@ -21,4 +21,8 @@ export class MoviesService {
         );
     });
   }
+
+  getMovies() {
+    return this.firestore.collection('mini-netflix-andela').snapshotChanges();
+  }
 }

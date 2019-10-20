@@ -5,7 +5,24 @@ import { Movie } from '..';
   name: 'searchMovie'
 })
 export class SearchMoviePipe implements PipeTransform {
-  transform(listMovies: Movie[], searchTerme: string): any {
-    return null;
+  transform(listMovies: any[], textFilter: string, args?: any): any {
+    if (!textFilter) {
+      return listMovies;
+    }
+    if (!listMovies) {
+      return [];
+    }
+
+    // We filter movie liste sargal if the text is found on any attribute of the partenaire
+    if (listMovies.length) {
+      const filteredList = listMovies.filter((movie: any) => {
+        return movie.payload.doc
+          .data()
+          .title.toLowerCase()
+          .match(textFilter.toLowerCase());
+      });
+
+      return filteredList;
+    }
   }
 }
