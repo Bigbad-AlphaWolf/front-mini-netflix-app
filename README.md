@@ -1,5 +1,6 @@
 # Front-mini-netflix-app
 Google Africa Developer Scholarship Phase II: Mobile Web Specialist Challenge I, This challenge is to build a mini-netflix web application with Angular.
+There is the link to my deployed app with netifly: https://vigilant-kowalevski-be7a62.netlify.com/
 
 # MiniNetflixApp
 
