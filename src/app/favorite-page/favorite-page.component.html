@@ -15,16 +15,10 @@
 
     <!-- Menu -->
     <nav id="menu">
-      <header>Menu</header>
+      <header (click)="goToHomePage()">Menu</header>
       <div class="menu-items">
-        <span>
-          Accueil
-        </span>
-        <span (click)="goToFavoritePage()">
-          Mes films favoris
-        </span>
-        <span>
-          Contacts
+        <span (click)="goToHomePage()">
+          Retour à la page d'accueil
         </span>
       </div>
     </nav>
@@ -65,9 +59,6 @@
         <p>
           Vous pourrez effectuer votre recherche d'un film à partir de la barre de recherche en haut à gauche.
         </p>
-        <ul class="actions">
-          <li><a (click)="create(listMovies[0])" class="button big">Learn More</a></li>
-        </ul>
       </div>
       <span class="image object">
         <div class="sliding-bg" alt=""></div>
@@ -77,14 +68,14 @@
     <!-- Section -->
     <section>
       <header class="major">
-        <h2>Films disponibles</h2>
+        <h2>Mes Films Favoris</h2>
       </header>
       <div class="posts">
         <div class="loader" *ngIf="!isLoaded">
           <img src="assets/images/loader.gif" alt="" />
         </div>
         <ng-container *ngIf="isLoaded">
-          <article *ngFor="let movie of listMovies | searchMovie: textFilter; let i = index">
+          <article *ngFor="let movie of listMoviesFavorites | searchMovie: textFilter; let i = index">
             <a class="image"><img #img [src]="movie.img" (error)="img.src = 'assets/images/pic01.jpg'" alt=""/></a>
             <h3 [innerHTML]="movie.title"></h3>
             <p *ngIf="movie.description" [innerHTML]="movie.description"></p>
@@ -92,18 +83,18 @@
               <div (click)="display.show = !display.show" #display class="see-detail-block">
                 <span class="button">{{ !display.show ? 'Plus de details' : 'Moins de details' }} </span>
               </div>
-              <div class="favorite-block">
-                <input
-                  type="checkbox"
-                  (change)="setMovieToFavorite(movie)"
-                  [(ngModel)]="movie.favorite"
-                  [name]="'favorite' + i"
-                  [id]="'favorite' + i"
-                />
-                <label [for]="'favorite' + i">
-                  {{ movie.favorite ? 'Favorie' : 'Cochez pour le mettre dans vos favoris' }}
-                </label>
-              </div>
+              <!-- <div class="favorite-block">
+                  <input
+                    type="checkbox"
+                    (change)="setMovieToFavorite(movie, $event)"
+                    [(ngModel)]="movie.favorite"
+                    [name]="'favorite' + i"
+                    [id]="'favorite' + i"
+                  />
+                  <label [for]="'favorite' + i">
+                    {{ movie.favorite ? 'Favorie' : 'Cochez pour le mettre dans vos favoris' }}
+                  </label>
+                </div> -->
             </ul>
             <div *ngIf="display.show" class="details">
               <div>

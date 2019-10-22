@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '..';
 import { MoviesService } from '../services/movies.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
     category: ['']
   };
   textFilter: string;
-  constructor(private movieService: MoviesService) {}
+  constructor(private movieService: MoviesService, private router: Router) {}
   listMovies: Movie;
   isLoaded: boolean;
   ngOnInit() {
@@ -38,8 +39,10 @@ export class HomeComponent implements OnInit {
 
   getMovies() {
     this.isLoaded = false;
-    this.movieService.getMovies().subscribe(
+    this.movieService.getAllMovies().subscribe(
       (res: any) => {
+        console.log(res);
+
         this.isLoaded = true;
         this.listMovies = res;
       },
@@ -48,5 +51,20 @@ export class HomeComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  setMovieToFavorite(movie: Movie) {
+    this.movieService.setMovieToFavoris(movie).subscribe(
+      (res: any) => {
+        console.log('update', res);
+      },
+      (err: any) => {
+        console.log('err', err);
+      }
+    );
+  }
+
+  goToFavoritePage() {
+    this.router.navigate(['/favorite']);
   }
 }

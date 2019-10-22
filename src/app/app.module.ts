@@ -9,15 +9,21 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FavoritePageComponent } from './favorite-page/favorite-page.component';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SearchMoviePipe],
+  declarations: [AppComponent, HomeComponent, SearchMoviePipe, FavoritePageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
