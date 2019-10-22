@@ -16,10 +16,7 @@ export class SearchMoviePipe implements PipeTransform {
     // We filter movie liste sargal if the text is found on any attribute of the partenaire
     if (listMovies.length) {
       const filteredList = listMovies.filter((movie: any) => {
-        return movie.payload.doc
-          .data()
-          .title.toLowerCase()
-          .match(textFilter.toLowerCase());
+        return movie.title.toLowerCase().match(textFilter.toLowerCase());
       });
 
       return filteredList;

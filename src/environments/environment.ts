@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: '278018783962',
     appId: '1:278018783962:web:349d85300c6793785103e3',
     measurementId: 'G-EXN1R1WHD8'
-  }
+  },
+  backendServer: 'https://shrouded-brook-47788.herokuapp.com'
 };
 
 /*

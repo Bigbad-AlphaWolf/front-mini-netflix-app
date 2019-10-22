@@ -63,20 +63,6 @@
       }
     }
   }
-  .posts {
-    article {
-      .actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .see-detail-block {
-          margin-right: 20px;
-        }
-        .favorite-block {
-        }
-      }
-    }
-  }
 }
 
 @keyframes slide {
