@@ -7,8 +7,9 @@ There is the link to my deployed app with netifly: https://vigilant-kowalevski-b
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
 
 ## Development server
-
+### Run the front end app
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 
 ## Code scaffolding
 
